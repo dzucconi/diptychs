@@ -18,10 +18,7 @@ fragment Collection on Collection {
       image: resized(width: 800, height: 800) {
         height
         width
-        urls {
-          _1x
-          _2x
-        }
+        url
       }
     }
   }
@@ -39,7 +36,7 @@ const renderCell = ({ image, id }) => `
   <div class='Cell'>
     <a href='https://auspic.es/damon/images/${id}' target='_blank'>
       <img
-        src="${image.urls._1x}"
+        src="${image.url}"
         width="${image.width}"
         height="${image.height}"
       />
