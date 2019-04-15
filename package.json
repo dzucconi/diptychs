@@ -35,10 +35,6 @@
     "uglify-js-brunch": "^2.10.0"
   },
   "dependencies": {
-    "fetchql": "^3.0.0",
-    "graphql-request": "^1.8.2",
-    "lokka": "^1.7.0",
-    "lokka-transport-http": "^1.6.1",
     "queryparams": "0.0.7"
   }
 }
