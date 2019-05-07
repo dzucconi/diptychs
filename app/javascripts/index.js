@@ -1,4 +1,4 @@
-const ENDPOINT = 'https://auspic.es/graphql';
+const ENDPOINT = "https://atlas.auspic.es/graphql";
 
 const QUERY = `{
   user(id: "damon") {
@@ -24,7 +24,7 @@ fragment Collection on Collection {
   }
 }`;
 
-const shuffle = (xs) => {
+const shuffle = xs => {
   for (let i = xs.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [xs[i], xs[j]] = [xs[j], xs[i]];
@@ -34,7 +34,7 @@ const shuffle = (xs) => {
 
 const renderCell = ({ image, id }) => `
   <div class='Cell'>
-    <a href='https://auspic.es/damon/images/${id}' target='_blank'>
+    <a href='https://gaea.auspic.es/damon/x/image/${id}' target='_blank'>
       <img
         src="${image.url}"
         width="${image.width}"
@@ -46,23 +46,23 @@ const renderCell = ({ image, id }) => `
 
 export default () => {
   const DOM = {
-    app: document.getElementById('App'),
+    app: document.getElementById("App")
   };
 
   fetch(ENDPOINT, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
+      "Content-Type": "application/json",
+      Accept: "application/json"
     },
     body: JSON.stringify({ query: QUERY })
   })
     .then(res => res.json())
-    .then(({ data: { user: { tactics, atlas } }}) => {
+    .then(({ data: { user: { tactics, atlas } } }) => {
       DOM.app.innerHTML = shuffle([
         renderCell(tactics.images[0]),
-        renderCell(atlas.images[0]),
-      ]).join('');
+        renderCell(atlas.images[0])
+      ]).join("");
     })
     // eslint-disable-next-line no-console
     .catch(console.error.bind(console));
