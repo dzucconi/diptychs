@@ -13,12 +13,15 @@ const QUERY = `{
 
 fragment Collection on Collection {
   images: sample(amount: 1) {
-    ... on Image {
-      id
-      image: resized(width: 800, height: 800) {
-        height
-        width
-        url
+    id
+    entity {
+      ... on Image {
+        id
+        image: resized(width: 800, height: 800) {
+          height
+          width
+          url
+        }
       }
     }
   }
@@ -32,9 +35,9 @@ const shuffle = xs => {
   return xs;
 };
 
-const renderCell = ({ image, id }) => `
+const renderCell = ({ entity: { image }, id }) => `
   <div class='Cell'>
-    <a href='https://gaea.auspic.es/damon/x/image/${id}' target='_blank'>
+    <a href='https://gaea.auspic.es/damon/x/${id}' target='_blank'>
       <img
         src="${image.url}"
         width="${image.width}"
