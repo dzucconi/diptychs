@@ -2,7 +2,7 @@ const ENDPOINT =
   "https://atlas.auspic.es/graph/ff051744-2068-4507-a485-7cf52007263f";
 
 const QUERY = `{
-  studioWall: object {
+  diptychs: object {
     ... on Collection {
       id
       name
@@ -67,7 +67,7 @@ fetch(ENDPOINT, {
   .then(
     ({
       data: {
-        studioWall: { contents },
+        diptychs: { contents },
       },
     }) => {
       const cells = contents

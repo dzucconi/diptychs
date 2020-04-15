@@ -1,10 +1,10 @@
 {
-  "name": "studio-wall",
+  "name": "diptychs",
   "author": "Damon Zucconi",
   "version": "0.0.1",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dzucconi/studio-wall"
+    "url": "https://github.com/dzucconi/diptychs"
   },
   "scripts": {
     "build": "parcel build src/index.html",
