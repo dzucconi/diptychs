@@ -11,6 +11,6 @@
     "start": "parcel src/index.html --open"
   },
   "devDependencies": {
-    "parcel": "1.12.4"
+    "parcel": "2.8.0"
   }
 }
