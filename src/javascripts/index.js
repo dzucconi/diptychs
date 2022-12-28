@@ -1,25 +1,27 @@
 const ENDPOINT =
   "https://atlas.auspic.es/graph/ff051744-2068-4507-a485-7cf52007263f";
 
-const QUERY = `{
+const QUERY = `
+{
   diptychs: object {
-    ... on Collection {
+    id
+    name
+    contents {
       id
-      name
-      contents {
-        id
-        entity {
-          ... on Collection {
+      entity {
+        ... on Collection {
+          id
+          sample(amount: 1) {
             id
-            sample(amount: 1) {
-              id
-              entity {
-                ... on Image {
-                  id
-                  image: resized(width: 800, height: 800) {
-                    height
-                    width
-                    url
+            entity {
+              ... on Image {
+                id        
+                image: resized(width: 900, height: 900) {
+                  height
+                  width
+                  urls {
+                    _1x
+                    _2x
                   }
                 }
               }
@@ -29,7 +31,8 @@ const QUERY = `{
       }
     }
   }
-}`;
+}
+`;
 
 const shuffle = (xs) => {
   for (let i = xs.length - 1; i > 0; i--) {
@@ -40,15 +43,16 @@ const shuffle = (xs) => {
 };
 
 const renderCell = ({ entity: { image }, id }) => `
-  <div class='Cell'>
-    <a href='https://gaea.auspic.es/damon/x/${id}' target='_blank'>
-      <img
-        src="${image.url}"
-        width="${image.width}"
-        height="${image.height}"
-      />
-    </a>
-  </div>
+  <a class='Cell' href='https://auspic.es/x/${id}' target='_blank'>
+    <img
+      class='Cell__image'
+      src="${image.urls._1x}"
+      srcset="${image.urls._1x} 1x, ${image.urls._2x} 2x"
+      width="${image.width}"
+      height="${image.height}"
+      alt=""
+    />
+  </a>
 `;
 
 const DOM = {

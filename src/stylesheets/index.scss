@@ -38,25 +38,28 @@ body {
   padding: 2em;
   align-items: center;
   justify-content: center;
-}
-.Cell:first-child {
-  padding-right: 1em;
-}
-.Cell:last-child {
-  padding-left: 1em;
-}
-.Cell:after {
-  position: absolute;
-  display: block;
-  top: 50%;
-  left: 50%;
-  content: "";
-  border-radius: 50%;
-  background-color: #333;
-  width: 1em;
-  height: 1em;
-  transform: translate(-50%, -50%);
-  z-index: -1;
+
+  &:first-child {
+    padding-right: 1em;
+  }
+
+  &:last-child {
+    padding-left: 1em;
+  }
+
+  &:after {
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 50%;
+    content: "";
+    border-radius: 50%;
+    background-color: #333;
+    width: 1em;
+    height: 1em;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+  }
 }
 
 img {
